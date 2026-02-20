@@ -1,0 +1,43 @@
+@use '../abstracts/functions' as *;
+@use '../abstracts/variables' as *;
+@use '../abstracts/colors' as *;
+@use '../abstracts/media-queries' as *;
+@use '../abstracts/mixins' as *;
+
+.main-body {
+    background-color: $black;
+    margin: 0;
+}
+
+.links {
+    color: $gray;
+    font-family: $roboto;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: $white;
+    }
+}
+
+.nav {
+    padding: 2rem 3rem;
+    width: 100%;
+    box-sizing: border-box;
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    &__left {
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+    }
+}
