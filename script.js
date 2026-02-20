@@ -1,5 +1,3 @@
-
-
 gsap.registerPlugin(ScrollTrigger);
 const tl = gsap.timeline({
     scrollTrigger: {
@@ -23,11 +21,20 @@ tl.to(".cards__wrapper--item-4", {
     ease: "none"
 }, 0);
 
+tl.fromTo(".cards__text--main", {
+    y: "100vh",
+    opacity: 0
+}, {
+    y: 0,
+    opacity: 1,
+    ease: "power2.out"
+}, 0.2);
+
 
 ScrollSmoother.create({
-    wrapper:"#smooth-wrapper",
-    content:"#smooth-content",
-	smooth: 1.5, 
-	effects: true, 
-	smoothTouch: 0.1 
+    wrapper: "#smooth-wrapper",
+    content: "#smooth-content",
+    smooth: 1.5,
+    effects: true,
+    smoothTouch: 0.1
 });
