@@ -27,14 +27,14 @@ a:hover {
 }
 
 .links {
-  color: #aaa;
+  color: #aaaaaa;
   font-family: "Roboto", sans-serif;
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.3s ease;
 }
 .links:hover {
-  color: #fff;
+  color: #ffffff;
 }
 
 .nav {
@@ -75,7 +75,7 @@ a:hover {
 }
 .hero__wrapper--project-main {
   margin: 0;
-  color: #aaa;
+  color: #aaaaaa;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -83,7 +83,7 @@ a:hover {
 }
 .hero__wrapper--project-content {
   margin: 0;
-  color: #fff;
+  color: #ffffff;
   font-size: 1.125rem;
   font-family: "Roboto", sans-serif;
   font-weight: 700;
@@ -97,7 +97,7 @@ a:hover {
 }
 .hero__wrapper--creativity-main, .hero__wrapper--creativity-content {
   margin: 0;
-  color: #fff;
+  color: #ffffff;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   line-height: 0.95;
@@ -114,14 +114,14 @@ a:hover {
 }
 .hero__wrapper--mission-left {
   margin: 0;
-  color: #fff;
+  color: #ffffff;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   align-self: start;
 }
 .hero__wrapper--mission-mid, .hero__wrapper--mission-right {
   margin: 0;
-  color: #aaa;
+  color: #aaaaaa;
   font-family: "Roboto", sans-serif;
   font-size: 0.9375rem;
   line-height: 1.8;
@@ -146,6 +146,35 @@ a:hover {
     max-width: none;
   }
 }
+.ethics {
+  height: 100vh;
+  width: 100%;
+}
+.ethics__wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 7.5rem;
+  margin: 16.25rem auto;
+  padding: 0 1.5rem;
+  max-width: 62.5rem;
+}
+.ethics__wrapper--left-main {
+  margin: 0;
+  color: #adadad;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 1.125rem;
+}
+.ethics__wrapper--right-main {
+  margin: 0;
+  color: #575757;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  max-width: 26.25rem;
+}
+
 .cards {
   width: 100%;
   height: 100vh;
@@ -202,7 +231,7 @@ a:hover {
 }
 .cards__text--main {
   font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-  color: #fff;
+  color: #ffffff;
   width: 45%;
   max-width: 50rem;
   line-height: 1.4;
