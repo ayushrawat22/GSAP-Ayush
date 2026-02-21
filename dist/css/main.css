@@ -260,6 +260,35 @@ a:hover {
   max-width: 26.25rem;
 }
 
+.identity {
+  height: 100vh;
+  width: 100%;
+}
+.identity__wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 7.5rem;
+  margin: 16.25rem auto;
+  padding: 0 1.5rem;
+  max-width: 62.5rem;
+}
+.identity__wrapper--left-main {
+  margin: 0;
+  color: #adadad;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 1.125rem;
+}
+.identity__wrapper--right-main {
+  margin: 0;
+  color: #575757;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  max-width: 26.25rem;
+}
+
 .cards {
   width: 100%;
   height: 100vh;
