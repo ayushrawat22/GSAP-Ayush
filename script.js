@@ -97,6 +97,81 @@ const triggerFlipOnScroll = (galleryWrapEl, options) => {
 const gallerySection = document.querySelector('.gallery');
 triggerFlipOnScroll(gallerySection, {});
 
+//scattered section
+
+
+const triggerScatteredFlipOnScroll = (scatteredWrapEl, options) => {
+    let settings = {
+        flip: {
+            absoluteOnLeave: false,
+            absolute: false,
+            scale: true,
+            simple: true,
+        },
+        scrollTrigger: {
+            start: 'center center',
+            end: '+=300%',
+        },
+        stagger: 0
+    };
+
+    settings = Object.assign({}, settings, options);
+
+    const galleryEl = scatteredWrapEl.querySelector('.scattered__wrapper');
+    const galleryCaption = galleryEl.querySelector('.scattered__wrapper--item-caption');
+    const galleryItems = galleryEl.querySelectorAll('.scattered__wrapper--item');
+    const galleryItemsInner = galleryEl.querySelectorAll('.scattered__wrapper--item-main');
+
+    const elementsToFlip = [...galleryItems];
+    if (galleryCaption) elementsToFlip.push(galleryCaption);
+
+    galleryEl.classList.add('scattered__wrapper--switch');
+    const flipstate = Flip.getState(elementsToFlip, {
+        props: 'filter, opacity'
+    });
+
+    galleryEl.classList.remove('scattered__wrapper--switch');
+
+    const tlFlip = Flip.to(flipstate, {
+        ease: 'none',
+        absoluteOnLeave: settings.flip.absoluteOnLeave,
+        absolute: settings.flip.absolute,
+        scale: settings.flip.scale,
+        simple: settings.flip.simple,
+        scrollTrigger: {
+            trigger: galleryEl,
+            start: settings.scrollTrigger.start,
+            end: settings.scrollTrigger.end,
+            pin: scatteredWrapEl,
+            scrub: true,
+        },
+        stagger: settings.stagger
+    });
+
+    if (galleryItemsInner.length) {
+        tlFlip.fromTo(galleryItemsInner, {
+            scale: 2
+        }, {
+            scale: 1,
+            scrollTrigger: {
+                trigger: galleryEl,
+                start: settings.scrollTrigger.start,
+                end: settings.scrollTrigger.end,
+                scrub: true,
+            },
+        }, 0);
+    }
+};
+
+const scatteredSection = document.querySelector('.scattered');
+if (scatteredSection) {
+    triggerScatteredFlipOnScroll(scatteredSection, {
+        flip: { absolute: true, scale: false },
+        scrollTrigger: { start: 'center center', end: '+=900%' },
+        stagger: 0.05
+    });
+}
+
 
 
 let lenis;

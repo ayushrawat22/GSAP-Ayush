@@ -11,3 +11,7 @@
 .identity {
     @include text-section(flex-end);
 }
+
+.impact {
+    @include text-section(center);
+}
