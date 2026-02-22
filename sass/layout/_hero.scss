@@ -88,12 +88,8 @@
         max-width: px_to_rem(420px);
       }
     }
-  }
-}
 
-@media (max-width: 900px) {
-  .hero {
-    &__wrapper {
+    @media (max-width: 900px) {
       padding: px_to_rem(48px) px_to_rem(24px);
       grid-template-columns: 1fr;
 

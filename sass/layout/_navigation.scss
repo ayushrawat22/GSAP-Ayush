@@ -9,18 +9,6 @@
     margin: 0;
 }
 
-.links {
-    color: $gray;
-    font-family: $roboto;
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
-
-    &:hover {
-        color: $white;
-    }
-}
-
 .nav {
     padding: 2rem 3rem;
     width: 100%;
@@ -39,5 +27,22 @@
         display: flex;
         gap: 3rem;
         align-items: center;
+    }
+
+    &__right {
+        display: flex;
+        align-items: center;
+    }
+
+    &__link {
+        color: $gray;
+        font-family: $roboto;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: $white;
+        }
     }
 }
