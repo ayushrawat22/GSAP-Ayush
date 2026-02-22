@@ -15,3 +15,7 @@
 .impact {
     @include text-section(center);
 }
+
+.authenticity {
+    @include text-section(flex-end);
+}
