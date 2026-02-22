@@ -352,6 +352,74 @@ eyesSections.forEach(section => {
     triggerEyesFlipOnScroll(section, { flip: { scale: false } });
 });
 
+//lady section 
+const triggerLadyFlipOnScroll = (ladyWrapEl, options) => {
+    let settings = {
+        flip: {
+            absoluteOnLeave: false,
+            absolute: false,
+            scale: true,
+            simple: true,
+        },
+        scrollTrigger: {
+            start: 'center center',
+            end: '+=300%',
+        },
+        stagger: 0
+    };
+
+    settings = Object.assign({}, settings, options);
+
+    const galleryEl = ladyWrapEl.querySelector('.lady__wrapper');
+    const galleryCaption = galleryEl.querySelector('.lady__wrapper--text');
+    const galleryItems = galleryEl.querySelectorAll('.lady__wrapper--item');
+    const galleryItemsInner = galleryEl.querySelectorAll('.lady__wrapper--item-main');
+
+    const elementsToFlip = [...galleryItems, galleryCaption];
+
+    galleryEl.classList.add('lady__wrapper--switch');
+    const flipstate = Flip.getState(elementsToFlip, {
+        props: 'filter, opacity'
+    });
+
+    galleryEl.classList.remove('lady__wrapper--switch');
+
+    const tlFlip = Flip.to(flipstate, {
+        ease: 'none',
+        absoluteOnLeave: settings.flip.absoluteOnLeave,
+        absolute: settings.flip.absolute,
+        scale: settings.flip.scale,
+        simple: settings.flip.simple,
+        scrollTrigger: {
+            trigger: galleryEl,
+            start: settings.scrollTrigger.start,
+            end: settings.scrollTrigger.end,
+            pin: ladyWrapEl,
+            scrub: true,
+        },
+        stagger: settings.stagger
+    });
+
+    if (galleryItemsInner.length) {
+        tlFlip.fromTo(galleryItemsInner, {
+            scale: 2
+        }, {
+            scale: 1,
+            scrollTrigger: {
+                trigger: galleryEl,
+                start: settings.scrollTrigger.start,
+                end: settings.scrollTrigger.end,
+                scrub: true,
+            },
+        }, 0);
+    }
+};
+
+const ladySections = document.querySelectorAll('.lady');
+ladySections.forEach(section => {
+    triggerLadyFlipOnScroll(section, {});
+});
+
 
 let lenis;
 
