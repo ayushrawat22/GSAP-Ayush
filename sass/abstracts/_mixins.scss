@@ -21,12 +21,25 @@
 
     &__wrapper {
         display: flex;
-        justify-content: $justify;
+        flex-direction: column;
+        justify-content: flex-start;
         align-items: flex-start;
-        gap: px_to_rem(120px);
-        margin: px_to_rem(260px) auto;
+        gap: px_to_rem(40px);
+        margin: px_to_rem(120px) auto;
         padding: 0 px_to_rem(24px);
         max-width: px_to_rem(1000px);
+
+        @media screen and (min-width: 640px) {
+            gap: px_to_rem(80px);
+            margin: px_to_rem(180px) auto;
+        }
+
+        @media screen and (min-width: 768px) {
+            flex-direction: row;
+            justify-content: $justify;
+            gap: px_to_rem(120px);
+            margin: px_to_rem(260px) auto;
+        }
 
         &--left {
             &-main {

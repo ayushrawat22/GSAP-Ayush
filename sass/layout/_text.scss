@@ -19,3 +19,24 @@
 .authenticity {
     @include text-section(flex-end);
 }
+
+.harmony {
+    @include text-section(center);
+}
+
+.move {
+    @include text-section(flex-end);
+
+    &__wrapper {
+        margin-bottom: px_to_rem(100px);
+    }
+
+}
+
+.credit {
+    @include text-section(flex-start);
+
+    &__wrapper {
+        margin-top: px_to_rem(100px);
+    }
+}

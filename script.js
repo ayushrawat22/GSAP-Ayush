@@ -218,6 +218,140 @@ stackSections.forEach(section => {
     triggerStackFlipOnScroll(section, {});
 });
 
+//pigs section 
+const triggerPigsFlipOnScroll = (pigsWrapEl, options) => {
+    let settings = {
+        flip: {
+            absoluteOnLeave: false,
+            absolute: false,
+            scale: true,
+            simple: true,
+        },
+        scrollTrigger: {
+            start: 'center center',
+            end: '+=300%',
+        },
+        stagger: 0
+    };
+
+    settings = Object.assign({}, settings, options);
+
+    const galleryEl = pigsWrapEl.querySelector('.pigs__wrapper');
+    const galleryCaption = galleryEl.querySelector('.pigs__wrapper--text');
+    const galleryItems = galleryEl.querySelectorAll('.pigs__wrapper--item');
+    const galleryItemsInner = galleryEl.querySelectorAll('.pigs__wrapper--item-main');
+
+    const elementsToFlip = [...galleryItems, galleryCaption];
+
+    galleryEl.classList.add('pigs__wrapper--switch');
+    const flipstate = Flip.getState(elementsToFlip, {
+        props: 'filter, opacity'
+    });
+
+    galleryEl.classList.remove('pigs__wrapper--switch');
+
+    const tlFlip = Flip.to(flipstate, {
+        ease: 'none',
+        absoluteOnLeave: settings.flip.absoluteOnLeave,
+        absolute: settings.flip.absolute,
+        scale: settings.flip.scale,
+        simple: settings.flip.simple,
+        scrollTrigger: {
+            trigger: galleryEl,
+            start: settings.scrollTrigger.start,
+            end: settings.scrollTrigger.end,
+            pin: pigsWrapEl,
+            scrub: true,
+        },
+        stagger: settings.stagger
+    });
+
+    tlFlip.fromTo(galleryItemsInner, {
+        scale: 2
+    }, {
+        scale: 1,
+        scrollTrigger: {
+            trigger: galleryEl,
+            start: settings.scrollTrigger.start,
+            end: settings.scrollTrigger.end,
+            scrub: true,
+        },
+    }, 0);
+};
+
+const pigsSections = document.querySelectorAll('.pigs');
+pigsSections.forEach(section => {
+    triggerPigsFlipOnScroll(section, {});
+});
+
+//eyes section 
+const triggerEyesFlipOnScroll = (eyesWrapEl, options) => {
+    let settings = {
+        flip: {
+            absoluteOnLeave: false,
+            absolute: false,
+            scale: false,
+            simple: true,
+        },
+        scrollTrigger: {
+            start: 'center center',
+            end: '+=300%',
+        },
+        stagger: 0
+    };
+
+    settings = Object.assign({}, settings, options);
+
+    const galleryEl = eyesWrapEl.querySelector('.eyes__wrapper');
+    const galleryCaption = galleryEl.querySelector('.eyes__wrapper--text');
+    const galleryItems = galleryEl.querySelectorAll('.eyes__wrapper--item');
+    const galleryItemsInner = galleryEl.querySelectorAll('.eyes__wrapper--item-main');
+
+    const elementsToFlip = [...galleryItems, galleryCaption];
+
+    galleryEl.classList.add('eyes__wrapper--switch');
+    const flipstate = Flip.getState(elementsToFlip, {
+        props: 'filter, opacity'
+    });
+
+    galleryEl.classList.remove('eyes__wrapper--switch');
+
+    const tlFlip = Flip.to(flipstate, {
+        ease: 'none',
+        absoluteOnLeave: settings.flip.absoluteOnLeave,
+        absolute: settings.flip.absolute,
+        scale: settings.flip.scale,
+        simple: settings.flip.simple,
+        scrollTrigger: {
+            trigger: galleryEl,
+            start: settings.scrollTrigger.start,
+            end: settings.scrollTrigger.end,
+            pin: eyesWrapEl,
+            scrub: true,
+        },
+        stagger: settings.stagger
+    });
+
+    if (galleryItemsInner.length) {
+        tlFlip.fromTo(galleryItemsInner, {
+            scale: 2
+        }, {
+            scale: 1.5,
+            scrollTrigger: {
+                trigger: galleryEl,
+                start: settings.scrollTrigger.start,
+                end: settings.scrollTrigger.end,
+                scrub: true,
+            },
+        }, 0);
+    }
+};
+
+const eyesSections = document.querySelectorAll('.eyes');
+eyesSections.forEach(section => {
+    triggerEyesFlipOnScroll(section, { flip: { scale: false } });
+});
+
 
 let lenis;
 

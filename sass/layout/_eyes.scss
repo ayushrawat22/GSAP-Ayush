@@ -1,0 +1,108 @@
+@use '../abstracts/functions' as *;
+@use '../abstracts/variables' as *;
+@use '../abstracts/colors' as *;
+@use '../abstracts/media-queries' as *;
+@use '../abstracts/mixins' as *;
+
+.eyes {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: px_to_rem(400px) auto;
+    overflow: hidden;
+
+    &__wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        flex: none;
+
+        display: grid;
+        gap: px_to_rem(10px);
+        grid-template-columns: repeat(3, 32.5vw);
+        grid-template-rows: repeat(4, 23vh);
+        justify-content: center;
+        align-content: center;
+
+        &--item {
+            flex: none;
+            border-radius: px_to_rem(6px);
+            position: relative;
+            filter: brightness(1);
+            overflow: hidden;
+
+            &:nth-child(1) {
+                grid-area: 1 / 1 / 3 / 2;
+            }
+
+            &:nth-child(2) {
+                grid-area: 1 / 2 / 2 / 3;
+            }
+
+            &:nth-child(3) {
+                grid-area: 2 / 2 / 4 / 3;
+            }
+
+            &:nth-child(4) {
+                grid-area: 1 / 3 / 3 / 3;
+            }
+
+            &:nth-child(5) {
+                grid-area: 3 / 1 / 3 / 2;
+            }
+
+            &:nth-child(6) {
+                grid-area: 3 / 3 / 5 / 4;
+            }
+
+            &:nth-child(7) {
+                grid-area: 4 / 1 / 5 / 2;
+            }
+
+            &:nth-child(8) {
+                grid-area: 4 / 2 / 5 / 3;
+            }
+
+            &-main {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+        }
+
+        &--text {
+            z-index: 101;
+            color: $white;
+            font-weight: 400;
+            font-family: $roboto;
+
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            top: 50%;
+            left: 50%;
+            margin: 100vh 0 0 -50vw;
+            font-size: clamp(2rem, 10vw, 5rem);
+            display: grid;
+            place-items: center;
+
+            &-main {
+                margin: 0;
+            }
+        }
+
+        &--switch {
+            grid-template-columns: repeat(3, 100vw);
+            grid-template-rows: repeat(4, 49.5vh);
+            gap: px_to_rem(150px);
+
+            .eyes__wrapper--text {
+                margin-top: -50vh;
+            }
+        }
+    }
+}
