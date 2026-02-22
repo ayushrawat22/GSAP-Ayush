@@ -5,5 +5,38 @@
 @use '../abstracts/mixins' as *;
 
 .footer {
-    height: 85%;
+    height: 25vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    &__wrapper {
+        width: 100%;
+        padding: px_to_rem(16px);
+        max-width: px_to_rem(1000px);
+        margin: 0 auto;
+        margin-bottom: px_to_rem(350px);
+        display: flex;
+        justify-content: flex-start;
+
+        &--item {
+            max-width: px_to_rem(400px);
+
+            &-main {
+                line-height: 1.4;
+                margin: 0;
+                color: $gray-100;
+                font-family: $roboto;
+                font-size: px_to_rem(16px);
+
+                @media screen and (min-width: 640px) {
+                    font-size: px_to_rem(18px);
+                }
+
+                &-span {
+                    color: $white;
+                }
+            }
+        }
+    }
 }
