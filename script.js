@@ -79,19 +79,17 @@ const triggerFlipOnScroll = (galleryWrapEl, options) => {
         },
     });
 
-    if (galleryItemsInner.length) {
-        tlFlip.fromTo(galleryItemsInner, {
-            scale: 2
-        }, {
-            scale: 1,
-            scrollTrigger: {
-                trigger: galleryEl,
-                start: settings.scrollTrigger.start,
-                end: settings.scrollTrigger.end,
-                scrub: true,
-            },
-        }, 0);
-    }
+    tlFlip.fromTo(galleryItemsInner, {
+        scale: 2
+    }, {
+        scale: 1,
+        scrollTrigger: {
+            trigger: galleryEl,
+            start: settings.scrollTrigger.start,
+            end: settings.scrollTrigger.end,
+            scrub: true,
+        },
+    }, 0);
 };
 
 const gallerySection = document.querySelector('.gallery');
@@ -122,8 +120,7 @@ const triggerScatteredFlipOnScroll = (scatteredWrapEl, options) => {
     const galleryItems = galleryEl.querySelectorAll('.scattered__wrapper--item');
     const galleryItemsInner = galleryEl.querySelectorAll('.scattered__wrapper--item-main');
 
-    const elementsToFlip = [...galleryItems];
-    if (galleryCaption) elementsToFlip.push(galleryCaption);
+    const elementsToFlip = [...galleryItems, galleryCaption];
 
     galleryEl.classList.add('scattered__wrapper--switch');
     const flipstate = Flip.getState(elementsToFlip, {
@@ -148,30 +145,78 @@ const triggerScatteredFlipOnScroll = (scatteredWrapEl, options) => {
         stagger: settings.stagger
     });
 
-    if (galleryItemsInner.length) {
-        tlFlip.fromTo(galleryItemsInner, {
-            scale: 2
-        }, {
-            scale: 1,
-            scrollTrigger: {
-                trigger: galleryEl,
-                start: settings.scrollTrigger.start,
-                end: settings.scrollTrigger.end,
-                scrub: true,
-            },
-        }, 0);
-    }
+    tlFlip.fromTo(galleryItemsInner, {
+        scale: 2
+    }, {
+        scale: 1,
+        scrollTrigger: {
+            trigger: galleryEl,
+            start: settings.scrollTrigger.start,
+            end: settings.scrollTrigger.end,
+            scrub: true,
+        },
+    }, 0);
 };
 
 const scatteredSection = document.querySelector('.scattered');
-if (scatteredSection) {
-    triggerScatteredFlipOnScroll(scatteredSection, {
-        flip: { absolute: true, scale: false },
-        scrollTrigger: { start: 'center center', end: '+=900%' },
-        stagger: 0.05
-    });
-}
+triggerScatteredFlipOnScroll(scatteredSection, {
+    flip: { absolute: true, scale: false },
+    scrollTrigger: { start: 'center center', end: '+=900%' },
+    stagger: 0.05
+});
 
+//stack section
+const triggerStackFlipOnScroll = (stackWrapEl, options) => {
+    let settings = {
+        flip: {
+            absoluteOnLeave: false,
+            absolute: false,
+            scale: true,
+            simple: true,
+        },
+        scrollTrigger: {
+            start: 'center center',
+            end: '+=300%',
+        },
+        stagger: 0
+    };
+
+    settings = Object.assign({}, settings, options);
+
+    const galleryEl = stackWrapEl.querySelector('.cardstack__wrapper');
+    const galleryCaption = galleryEl.querySelector('.cardstack__wrapper--item-caption');
+    const galleryItems = galleryEl.querySelectorAll('.cardstack__wrapper--item');
+
+    const elementsToFlip = [...galleryItems, galleryCaption];
+
+    galleryEl.classList.add('cardstack__wrapper--switch');
+    const flipstate = Flip.getState(elementsToFlip, {
+        props: 'filter, opacity'
+    });
+
+    galleryEl.classList.remove('cardstack__wrapper--switch');
+
+    Flip.to(flipstate, {
+        ease: 'none',
+        absoluteOnLeave: settings.flip.absoluteOnLeave,
+        absolute: settings.flip.absolute,
+        scale: settings.flip.scale,
+        simple: settings.flip.simple,
+        scrollTrigger: {
+            trigger: galleryEl,
+            start: settings.scrollTrigger.start,
+            end: settings.scrollTrigger.end,
+            pin: stackWrapEl,
+            scrub: true,
+        },
+        stagger: settings.stagger
+    });
+};
+
+const stackSections = document.querySelectorAll('.cardstack');
+stackSections.forEach(section => {
+    triggerStackFlipOnScroll(section, {});
+});
 
 
 let lenis;
